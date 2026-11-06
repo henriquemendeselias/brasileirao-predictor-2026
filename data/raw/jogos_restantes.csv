@@ -1,0 +1,43 @@
+rodada,data,horario,mandante,visitante
+21,14/11/2026,20:30,Chapecoense-SC,Vasco
+34,06/11/2026,20:00,Vitoria,Fluminense
+35,14/11/2026,18:30,Mirassol,Atletico-MG
+35,18/11/2026,19:30,Coritiba,Santos
+35,18/11/2026,20:00,Remo,Chapecoense-SC
+35,18/11/2026,20:30,Flamengo RJ,Athletico-PR
+35,18/11/2026,20:30,Cruzeiro,Palmeiras
+35,18/11/2026,21:30,Corinthians,Botafogo RJ
+35,18/11/2026,21:30,Gremio,Bahia
+35,19/11/2026,19:30,Vasco,Internacional
+35,19/11/2026,19:30,Vitoria,Bragantino
+35,19/11/2026,21:30,Sao Paulo,Fluminense
+36,21/11/2026,16:30,Palmeiras,Flamengo RJ
+36,21/11/2026,17:30,Bahia,Coritiba
+36,21/11/2026,21:00,Chapecoense-SC,Cruzeiro
+36,22/11/2026,16:00,Athletico-PR,Remo
+36,22/11/2026,18:30,Fluminense,Mirassol
+36,22/11/2026,19:30,Bragantino,Vasco
+36,23/11/2026,19:30,Internacional,Vitoria
+36,23/11/2026,20:00,Botafogo RJ,Sao Paulo
+36,23/11/2026,21:00,Santos,Gremio
+36,25/11/2026,20:00,Atletico-MG,Corinthians
+37,28/11/2026,12:00,Mirassol,Athletico-PR
+37,28/11/2026,12:00,Coritiba,Flamengo RJ
+37,28/11/2026,12:00,Botafogo RJ,Bahia
+37,28/11/2026,12:00,Corinthians,Gremio
+37,28/11/2026,12:00,Vitoria,Santos
+37,28/11/2026,12:00,Internacional,Bragantino
+37,28/11/2026,12:00,Chapecoense-SC,Palmeiras
+37,28/11/2026,12:00,Atletico-MG,Vasco
+37,28/11/2026,12:00,Fluminense,Cruzeiro
+37,28/11/2026,12:00,Sao Paulo,Remo
+38,02/12/2026,12:00,Santos,Botafogo RJ
+38,02/12/2026,12:00,Vasco,Vitoria
+38,02/12/2026,12:00,Bragantino,Fluminense
+38,02/12/2026,12:00,Gremio,Mirassol
+38,02/12/2026,12:00,Bahia,Atletico-MG
+38,02/12/2026,12:00,Palmeiras,Coritiba
+38,02/12/2026,12:00,Flamengo RJ,Chapecoense-SC
+38,02/12/2026,12:00,Cruzeiro,Internacional
+38,02/12/2026,12:00,Athletico-PR,Sao Paulo
+38,02/12/2026,12:00,Remo,Corinthians

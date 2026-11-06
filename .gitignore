@@ -1,0 +1,51 @@
+# Anotações pessoais
+anotacoes/
+Anotacoes/
+
+# Ambiente Virtual Python
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / cache de execução
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribuição / builds
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Ambientes e Variáveis
+.env
+.env.local
+
+# IDEs e Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
