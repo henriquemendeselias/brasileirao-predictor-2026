@@ -13,11 +13,11 @@ Fórmulas fundamentais:
   P(Mandante = x, Visitante = y) = P(X = x) * P(Y = y) para x, y in {0, 1, ..., k_max}
 """
 
+import math
 from typing import Dict, Tuple
 
 import numpy as np
 import pandas as pd
-from scipy.stats import poisson
 
 
 K_MAX_DEFAULT = 8
@@ -61,9 +61,10 @@ def construir_matriz_poisson(
     Linha i = gols do mandante (0 a k_max)
     Coluna j = gols do visitante (0 a k_max)
     """
-    gols = np.arange(0, k_max + 1)
-    prob_mandante = poisson.pmf(gols, mu=lambda_mandante)
-    prob_visitante = poisson.pmf(gols, mu=lambda_visitante)
+    gols = np.arange(0, k_max + 1, dtype=np.float64)
+    fatoriais = np.array([math.factorial(k) for k in range(k_max + 1)], dtype=np.float64)
+    prob_mandante = (np.power(lambda_mandante, gols) * np.exp(-lambda_mandante)) / fatoriais
+    prob_visitante = (np.power(lambda_visitante, gols) * np.exp(-lambda_visitante)) / fatoriais
 
     # Produto externo: M[i, j] = P(Mandante = i) * P(Visitante = j)
     matriz = np.outer(prob_mandante, prob_visitante)

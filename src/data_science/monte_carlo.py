@@ -21,15 +21,16 @@ Arquitetura Vetorizada (NumPy):
    - Rebaixamento / Z4 (17º ao 20º)
 """
 
+import math
 from typing import Dict, Optional, Tuple
 
 import numpy as np
 import pandas as pd
-from scipy.stats import poisson
 
 
 N_SIMULACOES_DEFAULT = 50_000
 _CACHE_LUT_POISSON: Dict[Tuple[float, ...], np.ndarray] = {}
+_FATORIAIS_15 = np.array([math.factorial(k) for k in range(15)], dtype=np.float64)[:, None]
 
 
 def _obter_lut_poisson(lambdas: np.ndarray, n_lut: int = 8192) -> np.ndarray:
@@ -40,8 +41,9 @@ def _obter_lut_poisson(lambdas: np.ndarray, n_lut: int = 8192) -> np.ndarray:
     """
     chave = tuple(np.round(lambdas, 8))
     if chave not in _CACHE_LUT_POISSON:
-        ks = np.arange(15)
-        cdf = poisson.cdf(ks[:, None], lambdas[None, :])  # (15, n_jogos)
+        ks = np.arange(15, dtype=np.float64)[:, None]
+        pmf = (np.power(lambdas[None, :], ks) * np.exp(-lambdas[None, :])) / _FATORIAIS_15
+        cdf = np.cumsum(pmf, axis=0)  # (15, n_jogos)
         q = (np.arange(n_lut, dtype=np.float64) + 0.5) / n_lut
         _CACHE_LUT_POISSON[chave] = np.sum(q[:, None, None] > cdf.T[None, :, :], axis=2).astype(np.float64)
     return _CACHE_LUT_POISSON[chave]
