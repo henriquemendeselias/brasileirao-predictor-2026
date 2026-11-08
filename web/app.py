@@ -130,18 +130,18 @@ def index():
 def obter_estado_inicial():
     """
     Retorna o estado inicial do simulador:
-    - Tabela atual (com os 338 jogos concluídos + probabilidades iniciais de Monte Carlo)
+    - Tabela atual (com os 339 jogos concluídos + probabilidades iniciais de Monte Carlo)
     - Calendário completo da 1ª à 38ª rodada
-    - Rodada inicial padrão (34ª Rodada)
+    - Rodada inicial padrão (35ª Rodada)
     """
     resultado_mc = executar_simulacao_monte_carlo(
         df_tabela_atual=DF_TABELA_ATUAL,
         df_jogos_previstos=DF_JOGOS_PREVISTOS,
         placares_manuais={},
-        n_simulacoes=10_000,
+        n_simulacoes=50_000,
         seed=None,
+        incluir_resumo_df=False,
     )
-    df_mc = resultado_mc["df_resumo"].set_index("clube")
     probs_posicoes = resultado_mc["matriz_posicoes_prob"]
     mapa_idx_mc = {c: i for i, c in enumerate(resultado_mc["clubes_ordem"])}
 
@@ -150,16 +150,21 @@ def obter_estado_inicial():
     for _, row in DF_TABELA_ATUAL.iterrows():
         clube = row["clube"]
         pos = int(row["posicao"])
-        dados_mc = df_mc.loc[clube]
-        prob_pos_atual = float(probs_posicoes[mapa_idx_mc[clube], pos - 1])
+        c_idx = mapa_idx_mc[clube]
+
+        p_titulo = round(float(probs_posicoes[c_idx, 0]), 2)
+        p_libertadores = round(float(np.sum(probs_posicoes[c_idx, 0:6])), 2)
+        p_sulamericana = round(float(np.sum(probs_posicoes[c_idx, 6:12])), 2)
+        p_rebaixamento = round(float(np.sum(probs_posicoes[c_idx, 16:20])), 2)
+        prob_pos_atual = round(float(probs_posicoes[c_idx, pos - 1]), 2)
 
         col_int = definir_coluna_inteligente(
             posicao=pos,
-            prob_titulo=float(dados_mc["prob_titulo"]),
-            prob_libertadores=float(dados_mc["prob_libertadores"]),
-            prob_sulamericana=float(dados_mc["prob_sulamericana"]),
-            prob_rebaixamento=float(dados_mc["prob_rebaixamento"]),
-            prob_posicao_exata=round(prob_pos_atual, 2),
+            prob_titulo=p_titulo,
+            prob_libertadores=p_libertadores,
+            prob_sulamericana=p_sulamericana,
+            prob_rebaixamento=p_rebaixamento,
+            prob_posicao_exata=prob_pos_atual,
         )
 
         tabela_inicial.append(
@@ -176,10 +181,10 @@ def obter_estado_inicial():
                 "gols_contra": int(row["gols_contra"]),
                 "saldo_gols": int(row["saldo_gols"]),
                 "aproveitamento": float(row["aproveitamento"]),
-                "prob_titulo": float(dados_mc["prob_titulo"]),
-                "prob_libertadores": float(dados_mc["prob_libertadores"]),
-                "prob_sulamericana": float(dados_mc["prob_sulamericana"]),
-                "prob_rebaixamento": float(dados_mc["prob_rebaixamento"]),
+                "prob_titulo": p_titulo,
+                "prob_libertadores": p_libertadores,
+                "prob_sulamericana": p_sulamericana,
+                "prob_rebaixamento": p_rebaixamento,
                 "rotulo_coluna_inteligente": col_int["rotulo_objetivo"],
                 "valor_coluna_inteligente": col_int["prob_objetivo"],
                 "cor_coluna_inteligente": col_int["cor_badge"],
@@ -242,15 +247,15 @@ def simular_campeonato():
                 gv = max(0, min(20, int(v[1])))
                 placares_simulados_anteriores[int(k)] = (gm, gv)
 
-    # 1. Roda as 10.000 simulações de Monte Carlo tomando EXCLUSIVAMENTE `placares_manuais` como verdade
+    # 1. Roda as 50.000 simulações de Monte Carlo tomando EXCLUSIVAMENTE `placares_manuais` como verdade
     resultado_mc = executar_simulacao_monte_carlo(
         df_tabela_atual=DF_TABELA_ATUAL,
         df_jogos_previstos=DF_JOGOS_PREVISTOS,
         placares_manuais=placares_manuais,
-        n_simulacoes=10_000,
+        n_simulacoes=50_000,
         seed=None,
+        incluir_resumo_df=False,
     )
-    df_mc = resultado_mc["df_resumo"].set_index("clube")
     probs_posicoes = resultado_mc["matriz_posicoes_prob"]
     mapa_idx_mc = {c: i for i, c in enumerate(resultado_mc["clubes_ordem"])}
 
@@ -299,16 +304,21 @@ def simular_campeonato():
     for _, row in df_tabela_calculada.iterrows():
         clube = row["clube"]
         pos = int(row["posicao"])
-        dados_mc = df_mc.loc[clube]
-        prob_pos_atual = float(probs_posicoes[mapa_idx_mc[clube], pos - 1])
+        c_idx = mapa_idx_mc[clube]
+
+        p_titulo = round(float(probs_posicoes[c_idx, 0]), 2)
+        p_libertadores = round(float(np.sum(probs_posicoes[c_idx, 0:6])), 2)
+        p_sulamericana = round(float(np.sum(probs_posicoes[c_idx, 6:12])), 2)
+        p_rebaixamento = round(float(np.sum(probs_posicoes[c_idx, 16:20])), 2)
+        prob_pos_atual = round(float(probs_posicoes[c_idx, pos - 1]), 2)
 
         col_int = definir_coluna_inteligente(
             posicao=pos,
-            prob_titulo=float(dados_mc["prob_titulo"]),
-            prob_libertadores=float(dados_mc["prob_libertadores"]),
-            prob_sulamericana=float(dados_mc["prob_sulamericana"]),
-            prob_rebaixamento=float(dados_mc["prob_rebaixamento"]),
-            prob_posicao_exata=round(prob_pos_atual, 2),
+            prob_titulo=p_titulo,
+            prob_libertadores=p_libertadores,
+            prob_sulamericana=p_sulamericana,
+            prob_rebaixamento=p_rebaixamento,
+            prob_posicao_exata=prob_pos_atual,
         )
         tabela_saida.append(
             {
@@ -324,10 +334,10 @@ def simular_campeonato():
                 "gols_contra": int(row["gols_contra"]),
                 "saldo_gols": int(row["saldo_gols"]),
                 "aproveitamento": float(row["aproveitamento"]),
-                "prob_titulo": float(dados_mc["prob_titulo"]),
-                "prob_libertadores": float(dados_mc["prob_libertadores"]),
-                "prob_sulamericana": float(dados_mc["prob_sulamericana"]),
-                "prob_rebaixamento": float(dados_mc["prob_rebaixamento"]),
+                "prob_titulo": p_titulo,
+                "prob_libertadores": p_libertadores,
+                "prob_sulamericana": p_sulamericana,
+                "prob_rebaixamento": p_rebaixamento,
                 "rotulo_coluna_inteligente": col_int["rotulo_objetivo"],
                 "valor_coluna_inteligente": col_int["prob_objetivo"],
                 "cor_coluna_inteligente": col_int["cor_badge"],
@@ -340,7 +350,7 @@ def simular_campeonato():
             "tabela": tabela_saida,
             "placares_exibidos": placares_sorteados_ou_provaveis,
             "jogos_manuais_contagem": len(placares_manuais),
-            "n_simulacoes": 10_000,
+            "n_simulacoes": 50_000,
         }
     )
 
