@@ -6,6 +6,14 @@
   <title>Preditor do Brasileirão 2026</title>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo_brasileirao.png') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script>
+    (function () {
+      const temaSalvo = localStorage.getItem("tema_preditor_2026");
+      if (temaSalvo === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
 </head>
 <body>
   <header class="topbar">
@@ -13,34 +21,49 @@
       <div class="brand-wrap">
         <img src="{{ url_for('static', filename='img/logo_brasileirao.png') }}" alt="Logo Brasileirão" class="brand-logo" />
         <div class="brand">
-          <span class="brand-badge">BRASILEIRÃO 2026</span>
           <h1>Preditor do Brasileirão 2026</h1>
-          <p class="subtitle">Motor Preditivo Híbrido: Distribuição de Poisson + 10.000 Simulações de Monte Carlo</p>
+          <p class="subtitle">Distribuição de Poisson &bull; 50.000 Simulações de Monte Carlo</p>
         </div>
       </div>
       <div class="actions-bar">
         <button id="btn-preencher-poisson" class="btn btn-outline" title="Preenche os jogos em aberto com o placar exato mais provável segundo a Distribuição de Poisson">
-          ⚡ Preencher Mais Prováveis (Poisson)
+          Preencher Mais Prováveis com Poisson
         </button>
-        <button id="btn-simular-mc" class="btn btn-primary" title="Completa os 38 jogos e roda 10.000 simulações estocásticas respeitando seus palpites manuais">
-          🎲 Simular Campeonato (10.000x)
+        <button id="btn-simular-mc" class="btn btn-primary" title="Completa os 38 jogos e roda 50.000 simulações estocásticas respeitando seus palpites manuais">
+          Simular Campeonato 50.000x com Monte Carlo
         </button>
         <button id="btn-limpar" class="btn btn-ghost" title="Remove todos os placares digitados manualmente e restaura a classificação atual">
-          ↺ Resetar
+          Resetar
+        </button>
+        <button id="btn-tema" class="btn-theme-icon" title="Alternar entre Modo Claro e Modo Escuro" aria-label="Alternar tema">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
         </button>
       </div>
     </div>
   </header>
 
   <main class="main-layout">
-    <!-- PAINEL ESQUERDO: TABELA DE CLASSIFICAÇÃO -->
+    <!-- COLUNA ESQUERDA: TABELA DE CLASSIFICAÇÃO -->
     <section class="left-panel">
       <div class="panel-header">
         <div class="title-group">
           <h2>Classificação da Série A</h2>
-          <span id="status-modo-badge" class="mode-pill">Classificação Atual (339/380 jogos)</span>
+          <span id="status-modo-badge" class="mode-status-text">Classificação Atual (339/380 jogos)</span>
         </div>
-        <span id="contador-palpites" class="palpites-counter">0 palpites manuais ativos</span>
+        <span id="contador-palpites" class="palpites-counter">0 de 41 jogos futuros travados manualmente</span>
       </div>
 
       <div class="table-wrapper">
@@ -57,7 +80,7 @@
               <th title="Gols Contra">GC</th>
               <th title="Saldo de Gols">SG</th>
               <th title="Aproveitamento (%)">%</th>
-              <th class="col-smart" title="Probabilidade calculada por 10.000 simulações de Monte Carlo para a zona/objetivo atual do clube (passe o mouse para ver todas as probabilidades)">
+              <th class="col-smart" title="Probabilidade calculada por 50.000 simulações de Monte Carlo">
                 PROJEÇÃO MONTE CARLO
               </th>
             </tr>
@@ -76,15 +99,23 @@
       </div>
     </section>
 
-    <!-- PAINEL DIREITO: NAVEGADOR DE RODADAS (1ª A 38ª) -->
+    <!-- COLUNA DIREITA: NAVEGADOR DE RODADAS -->
     <aside class="right-panel">
       <div class="round-navigator">
-        <button id="btn-rodada-ant" class="nav-arrow" aria-label="Rodada anterior">&#8249;</button>
+        <button id="btn-rodada-ant" class="nav-arrow" aria-label="Rodada anterior">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
         <div class="round-selector-wrap">
-          <span id="titulo-rodada" class="round-title">34ª Rodada</span>
+          <span id="titulo-rodada" class="round-title">35ª Rodada</span>
           <span id="subtitulo-rodada" class="round-subtitle">Reta Final</span>
         </div>
-        <button id="btn-rodada-prox" class="nav-arrow" aria-label="Próxima rodada">&#8250;</button>
+        <button id="btn-rodada-prox" class="nav-arrow" aria-label="Próxima rodada">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
       </div>
 
       <div class="round-quick-pills">

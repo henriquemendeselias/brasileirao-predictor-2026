@@ -1,21 +1,13 @@
 /**
  * Frontend Interativo — Preditor do Brasileirão 2026.
- *
- * Regras de Estado:
- * - `placaresManuais`: Placares digitados pelo usuário no teclado (ou clicados em um jogo isolado).
- *   São tomados como VERDADE ABSOLUTA: travados nas 10.000 simulações de Monte Carlo e na tabela.
- *   Visualmente destacados em verde (`user-edited`).
- * - `placaresSimulados`: Placares gerados pelo motor quando o usuário clica em
- *   "🎲 Simular Campeonato (10.000x)" (sorteio estocástico de Poisson para os jogos em aberto)
- *   ou "⚡ Preencher Mais Prováveis (Poisson)".
- *   Aparecem preenchidos nas caixinhas em azul claro (`sim-filled`), mudam dinamicamente a
- *   cada clique em Simular e somam 100% com a tabela de 38 jogos da esquerda.
+ * Layout Editorial Esportivo (inspirado no Simulador do ge.globo e Opta Analyst).
  */
 
 let estadoCalendario = {};
 let rodadaAtual = 35;
 let placaresManuais = {};
 let placaresSimulados = {};
+let timerDebounceSimulacao = null;
 
 const CORES_CLUBES = {
   FLA: "#c52613",
@@ -64,6 +56,17 @@ function classeZonaPosicao(posicao) {
   return "zone-neutra";
 }
 
+function renderizarMetricaMC(rotulo, valor, tom) {
+  const pct = Math.max(0, Math.min(100, Number(valor)));
+  return `
+    <span class="mc-item mc-tone-${tom}">
+      <i class="mc-sq"></i>
+      <span class="mc-label">${rotulo}</span>
+      <strong class="mc-val">${pct.toFixed(1)}%</strong>
+    </span>
+  `;
+}
+
 function renderizarTabela(linhasTabela, modo = "manual") {
   const tbody = document.getElementById("tbody-classificacao");
   tbody.innerHTML = "";
@@ -72,15 +75,37 @@ function renderizarTabela(linhasTabela, modo = "manual") {
     const tr = document.createElement("tr");
     tr.className = classeZonaPosicao(item.posicao);
 
-    const tooltipMC = [
-      `Probabilidades em 10.000 simulações (Monte Carlo):`,
-      `• Título (1º): ${item.prob_titulo.toFixed(2)}%`,
-      `• Libertadores (G6): ${item.prob_libertadores.toFixed(2)}%`,
-      `• Sul-Americana (7º-12º): ${item.prob_sulamericana.toFixed(2)}%`,
-      `• Risco Z4 (17º-20º): ${item.prob_rebaixamento.toFixed(2)}%`,
-    ].join("\n");
+    const disputaSulaEZ4 =
+      (item.posicao >= 13 && item.posicao <= 16 && (item.prob_sulamericana > 0 || item.prob_rebaixamento > 0)) ||
+      (item.prob_sulamericana >= 1.0 && item.prob_rebaixamento >= 1.0);
 
-    const classeBadge = `badge-${item.cor_coluna_inteligente || "slate"}`;
+    let conteudoProjecaoHTML = "";
+    if (disputaSulaEZ4) {
+      conteudoProjecaoHTML = `
+        <div class="mc-inline-dual">
+          ${renderizarMetricaMC("Sula", item.prob_sulamericana, "sky")}
+          <span class="mc-sep"></span>
+          ${renderizarMetricaMC("Z4", item.prob_rebaixamento, "rose")}
+        </div>
+      `;
+    } else {
+      const tom = item.cor_coluna_inteligente || "slate";
+      conteudoProjecaoHTML = `
+        <div class="mc-inline-single">
+          ${renderizarMetricaMC(item.rotulo_coluna_inteligente, item.valor_coluna_inteligente, tom)}
+        </div>
+      `;
+    }
+
+    const popoverMC = `
+      <div class="mc-tooltip">
+        <div class="mc-tooltip-title">${item.clube} — 50.000x Monte Carlo</div>
+        <div class="mc-tooltip-row"><span>Título (1º)</span><strong>${item.prob_titulo.toFixed(2)}%</strong></div>
+        <div class="mc-tooltip-row"><span>Libertadores (G6)</span><strong>${item.prob_libertadores.toFixed(2)}%</strong></div>
+        <div class="mc-tooltip-row"><span>Sul-Americana (7º–12º)</span><strong>${item.prob_sulamericana.toFixed(2)}%</strong></div>
+        <div class="mc-tooltip-row"><span>Risco Z4 (17º–20º)</span><strong>${item.prob_rebaixamento.toFixed(2)}%</strong></div>
+      </div>
+    `;
 
     tr.innerHTML = `
       <td class="cell-pos">${item.posicao}º</td>
@@ -100,10 +125,10 @@ function renderizarTabela(linhasTabela, modo = "manual") {
       <td>${item.saldo_gols}</td>
       <td>${Math.round(item.aproveitamento)}</td>
       <td class="cell-smart">
-        <span class="smart-badge ${classeBadge}" title="${tooltipMC}">
-          <span class="smart-label">${item.rotulo_coluna_inteligente}</span>
-          <span class="smart-val">${item.valor_coluna_inteligente.toFixed(1)}%</span>
-        </span>
+        <div class="smart-cell-wrap">
+          ${conteudoProjecaoHTML}
+          ${popoverMC}
+        </div>
       </td>
     `;
     tbody.appendChild(tr);
@@ -112,16 +137,16 @@ function renderizarTabela(linhasTabela, modo = "manual") {
   const badgeModo = document.getElementById("status-modo-badge");
   const todos38 = linhasTabela.every((r) => r.jogos === 38);
   if (modo === "sortear_dinamico") {
-    badgeModo.textContent = "Simulação Estocástica (38/38 jogos + 10.000x Monte Carlo)";
+    badgeModo.textContent = "Simulação Estocástica via Monte Carlo";
     badgeModo.classList.add("simulated");
   } else if (modo === "preencher_provaveis" || todos38) {
-    badgeModo.textContent = "Projeção Mais Provável (38/38 jogos + 10.000x Monte Carlo)";
+    badgeModo.textContent = "Projeção Mais Provável via Poisson";
     badgeModo.classList.add("simulated");
   } else {
     const qtdManuais = Object.keys(placaresManuais).length;
     badgeModo.textContent =
       qtdManuais > 0
-        ? `Classificação Parcial (+${qtdManuais} palpite(s) manual(is) ativo(s))`
+        ? `Classificação Parcial (+${qtdManuais} palpite(s) manual(is))`
         : "Classificação Atual (339/380 jogos)";
     badgeModo.classList.remove("simulated");
   }
@@ -139,8 +164,8 @@ function renderizarRodada(numeroRodada) {
   const pendentesNaRodada = jogos.filter((j) => !j.realizado).length;
   document.getElementById("subtitulo-rodada").textContent =
     pendentesNaRodada === 0
-      ? "Rodada Concluída (Resultados Oficiais)"
-      : `${pendentesNaRodada} partida(s) aberta(s) para simulação`;
+      ? "Resultados Oficiais"
+      : `${pendentesNaRodada} partida(s) aberta(s)`;
 
   document.getElementById("btn-rodada-ant").disabled = rodadaAtual <= 1;
   document.getElementById("btn-rodada-prox").disabled = rodadaAtual >= 38;
@@ -210,24 +235,24 @@ function renderizarRodada(numeroRodada) {
 
       rodapePoissonHTML = `
         <div class="poisson-hint">
-          <span title="Expectativa de gols (Lambda Mandante x Lambda Visitante)">
-            λ: ${jogo.lambda_mandante.toFixed(2)} x ${jogo.lambda_visitante.toFixed(2)}
+          <span class="poisson-lambda" title="Expectativa de gols (Lambda Mandante x Lambda Visitante)">
+            λ ${jogo.lambda_mandante.toFixed(2)} vs ${jogo.lambda_visitante.toFixed(2)}
           </span>
           <span
-            class="poisson-pill"
+            class="poisson-link"
             data-id-futuro="${idFut}"
             data-gm="${jogo.gols_mandante_provavel}"
             data-gv="${jogo.gols_visitante_provavel}"
-            title="Clique para travar este placar (${jogo.prob_vitoria_mandante}% Casa | ${jogo.prob_empate}% Empate | ${jogo.prob_vitoria_visitante}% Fora)"
+            title="Aplicar este placar (${jogo.prob_vitoria_mandante.toFixed(0)}% Casa | ${jogo.prob_empate.toFixed(0)}% Empate | ${jogo.prob_vitoria_visitante.toFixed(0)}% Fora)"
           >
-            Mais provável: ${jogo.placar_provavel}
+            Provável: <strong>${jogo.placar_provavel}</strong>
           </span>
         </div>
       `;
     }
 
     card.innerHTML = `
-      <div class="match-meta">${jogo.data} • ${jogo.horario} | ${jogo.estadio}</div>
+      <div class="match-meta">${jogo.data} &bull; ${jogo.horario} | ${jogo.estadio}</div>
       <div class="match-row">
         <div class="team-side home" title="${jogo.mandante}">
           ${renderizarEscudoHTML(jogo.sigla_mandante, jogo.mandante)}
@@ -251,11 +276,11 @@ function renderizarRodada(numeroRodada) {
   });
 
   // Evento de clique rápido na sugestão de Poisson de um jogo específico
-  container.querySelectorAll(".poisson-pill").forEach((pill) => {
-    pill.addEventListener("click", () => {
-      const idFut = Number(pill.dataset.idFuturo);
-      const gm = Number(pill.dataset.gm);
-      const gv = Number(pill.dataset.gv);
+  container.querySelectorAll(".poisson-link").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const idFut = Number(btn.dataset.idFuturo);
+      const gm = Number(btn.dataset.gm);
+      const gv = Number(btn.dataset.gv);
       placaresManuais[idFut] = [gm, gv];
       renderizarRodada(rodadaAtual);
       enviarSimulacaoServidor("manual");
@@ -264,7 +289,6 @@ function renderizarRodada(numeroRodada) {
 }
 
 function aoEditarPlacarManual(e) {
-  // Aceita apenas dígitos numéricos no campo de texto
   e.target.value = e.target.value.replace(/[^0-9]/g, "");
 
   const idFut = Number(e.target.dataset.idFuturo);
@@ -284,7 +308,7 @@ function aoEditarPlacarManual(e) {
       card.classList.remove("sim-filled");
       card.classList.add("user-edited");
     }
-    enviarSimulacaoServidor("manual");
+    agendarSimulacaoManual();
   } else if (valM === "" && valV === "") {
     delete placaresManuais[idFut];
     delete placaresSimulados[idFut];
@@ -292,8 +316,15 @@ function aoEditarPlacarManual(e) {
       card.classList.remove("user-edited");
       card.classList.remove("sim-filled");
     }
-    enviarSimulacaoServidor("manual");
+    agendarSimulacaoManual();
   }
+}
+
+function agendarSimulacaoManual() {
+  if (timerDebounceSimulacao) clearTimeout(timerDebounceSimulacao);
+  timerDebounceSimulacao = setTimeout(() => {
+    enviarSimulacaoServidor("manual");
+  }, 100);
 }
 
 async function enviarSimulacaoServidor(modo = "manual") {
@@ -310,7 +341,6 @@ async function enviarSimulacaoServidor(modo = "manual") {
     const dados = await resp.json();
 
     if (modo === "sortear_dinamico" || modo === "preencher_provaveis") {
-      // Atualiza os placares exibidos nas caixinhas para os jogos que não foram travados manualmente
       placaresSimulados = {};
       const exibidos = dados.placares_exibidos || {};
       Object.keys(exibidos).forEach((k) => {
@@ -366,5 +396,17 @@ document.addEventListener("DOMContentLoaded", () => {
     placaresManuais = {};
     placaresSimulados = {};
     carregarEstadoInicial();
+  });
+
+  const btnTema = document.getElementById("btn-tema");
+  btnTema.addEventListener("click", () => {
+    const atual = document.documentElement.getAttribute("data-theme");
+    if (atual === "dark") {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("tema_preditor_2026", "light");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("tema_preditor_2026", "dark");
+    }
   });
 });
