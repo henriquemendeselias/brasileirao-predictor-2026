@@ -1,0 +1,23 @@
+Coloque aqui os escudos dos 20 clubes nomeados pela sigla oficial de 3 letras em `.png`:
+- `ATH.png` / `CAP.png` (Athletico-PR -> `CAP.png`)
+- `CAM.png` (Atlético-MG)
+- `BAH.png` (Bahia)
+- `BOT.png` (Botafogo)
+- `RBB.png` (Red Bull Bragantino)
+- `CHA.png` (Chapecoense)
+- `COR.png` (Corinthians)
+- `CFC.png` (Coritiba)
+- `CRU.png` (Cruzeiro)
+- `FLA.png` (Flamengo)
+- `FLU.png` (Fluminense)
+- `GRE.png` (Grêmio)
+- `INT.png` (Internacional)
+- `MIR.png` (Mirassol)
+- `PAL.png` (Palmeiras)
+- `REM.png` (Remo)
+- `SAN.png` (Santos)
+- `SAO.png` (São Paulo)
+- `VAS.png` (Vasco da Gama)
+- `VIT.png` (Vitória)
+
+Caso algum arquivo `.png` ainda não esteja nesta pasta, a interface exibe automaticamente um escudo circular estilizado com a cor e a sigla oficial do clube.
