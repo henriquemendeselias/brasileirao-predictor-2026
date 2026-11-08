@@ -25,9 +25,26 @@ from typing import Dict, Optional, Tuple
 
 import numpy as np
 import pandas as pd
+from scipy.stats import poisson
 
 
-N_SIMULACOES_DEFAULT = 10_000
+N_SIMULACOES_DEFAULT = 50_000
+_CACHE_LUT_POISSON: Dict[Tuple[float, ...], np.ndarray] = {}
+
+
+def _obter_lut_poisson(lambdas: np.ndarray, n_lut: int = 8192) -> np.ndarray:
+    """
+    Pré-calcula a tabela de inversão quantílica (Inverse CDF Lookup Table) da
+    Distribuição de Poisson para um vetor de lambdas, permitindo amostragem
+    vetorizada ultra-rápida em O(1) via indexação inteira.
+    """
+    chave = tuple(np.round(lambdas, 8))
+    if chave not in _CACHE_LUT_POISSON:
+        ks = np.arange(15)
+        cdf = poisson.cdf(ks[:, None], lambdas[None, :])  # (15, n_jogos)
+        q = (np.arange(n_lut, dtype=np.float64) + 0.5) / n_lut
+        _CACHE_LUT_POISSON[chave] = np.sum(q[:, None, None] > cdf.T[None, :, :], axis=2).astype(np.float64)
+    return _CACHE_LUT_POISSON[chave]
 
 
 def projetar_tabela_deterministica(
@@ -179,6 +196,7 @@ def executar_simulacao_monte_carlo(
     placares_manuais: Optional[Dict[int, Tuple[int, int]]] = None,
     n_simulacoes: int = N_SIMULACOES_DEFAULT,
     seed: Optional[int] = 42,
+    incluir_resumo_df: bool = True,
 ) -> Dict[str, object]:
     """
     Executa de forma 100% vetorizada as `n_simulacoes` de Monte Carlo para os jogos restantes.
@@ -215,47 +233,61 @@ def executar_simulacao_monte_carlo(
     lambdas_v = df_jogos_previstos["lambda_visitante"].to_numpy(dtype=np.float64)
     ids_jogos = df_jogos_previstos["id_jogo"].to_numpy(dtype=np.int32)
 
-    # Sorteio vetorizado de gols: matrizes (n_simulacoes, n_jogos)
-    gols_m_sim = rng.poisson(lam=lambdas_m, size=(n_simulacoes, n_jogos)).astype(np.int32)
-    gols_v_sim = rng.poisson(lam=lambdas_v, size=(n_simulacoes, n_jogos)).astype(np.int32)
+    # Sorteio vetorizado de gols via LUT quantílica de Poisson: matrizes (n_simulacoes, n_jogos)
+    n_lut = 8192
+    lut_m = _obter_lut_poisson(lambdas_m, n_lut=n_lut)
+    lut_v = _obter_lut_poisson(lambdas_v, n_lut=n_lut)
+    cols_jogos = np.arange(n_jogos)[None, :]
+    idx_rand_m = rng.integers(0, n_lut, size=(n_simulacoes, n_jogos), dtype=np.int16)
+    idx_rand_v = rng.integers(0, n_lut, size=(n_simulacoes, n_jogos), dtype=np.int16)
+    gols_m_sim = lut_m[idx_rand_m, cols_jogos]
+    gols_v_sim = lut_v[idx_rand_v, cols_jogos]
 
     # Aplica trava nos jogos com placar manual definido pelo usuário
     for j_col, id_jogo in enumerate(ids_jogos):
         if int(id_jogo) in placares_manuais:
             gm_fixo, gv_fixo = placares_manuais[int(id_jogo)]
-            gols_m_sim[:, j_col] = int(gm_fixo)
-            gols_v_sim[:, j_col] = int(gv_fixo)
+            gols_m_sim[:, j_col] = float(gm_fixo)
+            gols_v_sim[:, j_col] = float(gv_fixo)
 
-    # Resultados por jogo nas simulações
-    vitoria_m = (gols_m_sim > gols_v_sim).astype(np.int32)
-    empate = (gols_m_sim == gols_v_sim).astype(np.int32)
-    vitoria_v = (gols_m_sim < gols_v_sim).astype(np.int32)
-
-    pontos_jogo_m = (vitoria_m * 3) + empate
-    pontos_jogo_v = (vitoria_v * 3) + empate
-
-    # Acumulação rápida por clube usando matrizes de incidência (n_jogos, n_clubes)
-    incidencia_m = np.zeros((n_jogos, n_clubes), dtype=np.int32)
-    incidencia_v = np.zeros((n_jogos, n_clubes), dtype=np.int32)
-    incidencia_m[np.arange(n_jogos), idx_mandantes] = 1
-    incidencia_v[np.arange(n_jogos), idx_visitantes] = 1
-
-    pontos_finais = pontos_base + (pontos_jogo_m @ incidencia_m) + (pontos_jogo_v @ incidencia_v)
-    vitorias_finais = vitorias_base + (vitoria_m @ incidencia_m) + (vitoria_v @ incidencia_v)
-    gp_finais = gp_base + (gols_m_sim @ incidencia_m) + (gols_v_sim @ incidencia_v)
-    gc_finais = gc_base + (gols_v_sim @ incidencia_m) + (gols_m_sim @ incidencia_v)
-    sg_finais = gp_finais - gc_finais
-
-    # Chave composta inteira de 64 bits para ordenação simultânea pelos 4 critérios da CBF:
-    # 1º Pontos (0..114) | 2º Vitórias (0..38) | 3º Saldo + 500 (0..1000) | 4º Gols Pró (0..250)
-    # Adicionamos pequeno desempate determinístico por índice para evitar colisão residual
-    chave_desempate = (
-        (pontos_finais.astype(np.int64) * 1_000_000_000)
-        + (vitorias_finais.astype(np.int64) * 10_000_000)
-        + ((sg_finais.astype(np.int64) + 500) * 10_000)
-        + (gp_finais.astype(np.int64) * 25)
-        + (n_clubes - np.arange(n_clubes, dtype=np.int64))[None, :]
+    # Acumulação via BLAS float64 (mantissa exata de 53 bits comporta chaves de até ~9x10^15 sem perda;
+    # nossa chave máxima é ~1.14x10^11) em apenas 2 multiplicações matriciais vetorizadas
+    sg_base = gp_base - gc_base
+    chave_base = (
+        (pontos_base.astype(np.float64) * 1_000_000_000.0)
+        + (vitorias_base.astype(np.float64) * 10_000_000.0)
+        + ((sg_base.astype(np.float64) + 500.0) * 10_000.0)
+        + (gp_base.astype(np.float64) * 25.0)
+        + (n_clubes - np.arange(n_clubes, dtype=np.float64))[None, :]
     )
+
+    incidencia_m = np.zeros((n_jogos, n_clubes), dtype=np.float64)
+    incidencia_v = np.zeros((n_jogos, n_clubes), dtype=np.float64)
+    incidencia_m[np.arange(n_jogos), idx_mandantes] = 1.0
+    incidencia_v[np.arange(n_jogos), idx_visitantes] = 1.0
+
+    vit_m = gols_m_sim > gols_v_sim
+    emp = gols_m_sim == gols_v_sim
+    vit_v = gols_m_sim < gols_v_sim
+    sg_jogo_m = gols_m_sim - gols_v_sim
+
+    delta_chave_m = (
+        (vit_m * 3_010_000_000.0)
+        + (emp * 1_000_000_000.0)
+        + (sg_jogo_m * 10_000.0)
+        + (gols_m_sim * 25.0)
+    )
+    delta_chave_v = (
+        (vit_v * 3_010_000_000.0)
+        + (emp * 1_000_000_000.0)
+        - (sg_jogo_m * 10_000.0)
+        + (gols_v_sim * 25.0)
+    )
+
+    chave_desempate = chave_base + (delta_chave_m @ incidencia_m) + (delta_chave_v @ incidencia_v)
+
+    # Extrai matriz final de pontos (n_simulacoes, n_clubes) diretamente do bitfield superior
+    pontos_finais = (chave_desempate // 1_000_000_000.0).astype(np.int32)
 
     # Ordena decrescentemente cada linha (simulação): `ordem_clubes[s, p]` = clube na posição p+1
     ordem_clubes = np.argsort(-chave_desempate, axis=1)
@@ -268,6 +300,19 @@ def executar_simulacao_monte_carlo(
         contagens_posicoes[:, pos] = contagem
 
     probs_posicoes = (contagens_posicoes / n_simulacoes) * 100.0
+
+    if not incluir_resumo_df:
+        return {
+            "df_resumo": None,
+            "matriz_pontos_simulados": pontos_finais,
+            "matriz_posicoes_prob": probs_posicoes,
+            "clubes_ordem": clubes,
+            "n_simulacoes": n_simulacoes,
+        }
+
+    # Estatísticas vetorizadas de pontos para todos os clubes de uma só vez
+    medias_pts_mc = np.mean(pontos_finais, axis=0)
+    p10_pts_all, p90_pts_all = np.percentile(pontos_finais, [10, 90], axis=0)
 
     # Tabela determinística projetada de 38 jogos (palpites manuais + mais prováveis de Poisson)
     df_proj = projetar_tabela_deterministica(
@@ -292,10 +337,9 @@ def executar_simulacao_monte_carlo(
         p_rebaixamento = float(np.sum(probs_posicoes[c_idx, 16:20]))
         p_pos_exata = float(probs_posicoes[c_idx, pos_projetada - 1])
 
-        pts_clube = pontos_finais[:, c_idx]
-        media_pts_mc = float(np.mean(pts_clube))
-        p10_pts = float(np.percentile(pts_clube, 10))
-        p90_pts = float(np.percentile(pts_clube, 90))
+        media_pts_mc = float(medias_pts_mc[c_idx])
+        p10_pts = float(p10_pts_all[c_idx])
+        p90_pts = float(p90_pts_all[c_idx])
 
         col_inteligente = definir_coluna_inteligente(
             posicao=pos_projetada,
