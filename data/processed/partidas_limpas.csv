@@ -1,0 +1,340 @@
+rodada,data,horario,mandante,visitante,gols_mandante,gols_visitante,resultado,sigla_mandante,sigla_visitante,estadio
+1,28/01/2026,22:00,Atlético-MG,Palmeiras,2,2,D,CAM,PAL,Arena MRV
+1,28/01/2026,22:00,Coritiba,Red Bull Bragantino,0,1,A,CFC,RBB,Couto Pereira
+1,28/01/2026,22:00,Internacional,Athletico-PR,0,1,A,INT,CAP,Beira-Rio
+1,28/01/2026,22:00,Vitória,Remo,2,0,H,VIT,REM,Barradão
+1,28/01/2026,22:30,Fluminense,Grêmio,2,1,H,FLU,GRE,Maracanã
+1,28/01/2026,23:00,Chapecoense,Santos,4,2,H,CHA,SAN,Arena Condá
+1,28/01/2026,23:00,Corinthians,Bahia,1,2,A,COR,BAH,Neo Química Arena
+1,29/01/2026,00:30,São Paulo,Flamengo,2,1,H,SAO,FLA,Morumbis
+1,29/01/2026,23:00,Mirassol,Vasco da Gama,2,1,H,MIR,VAS,Campos Maia
+1,30/01/2026,00:30,Botafogo,Cruzeiro,4,0,H,BOT,CRU,Engenhão
+2,04/02/2026,22:00,Red Bull Bragantino,Atlético-MG,1,0,H,RBB,CAM,Cícero de Souza Marques
+2,04/02/2026,22:00,Flamengo,Internacional,1,1,D,FLA,INT,Maracanã
+2,04/02/2026,23:00,Remo,Mirassol,2,2,D,REM,MIR,Mangueirão
+2,04/02/2026,23:00,Santos,São Paulo,1,1,D,SAN,SAO,Vila Belmiro
+2,05/02/2026,00:30,Grêmio,Botafogo,5,3,H,GRE,BOT,Arena do Grêmio
+2,05/02/2026,00:30,Palmeiras,Vitória,5,1,H,PAL,VIT,Allianz Parque
+2,05/02/2026,22:00,Bahia,Fluminense,1,1,D,BAH,FLU,Arena Fonte Nova
+2,05/02/2026,23:00,Vasco da Gama,Chapecoense,1,1,D,VAS,CHA,São Januário
+2,06/02/2026,00:30,Cruzeiro,Coritiba,1,2,A,CRU,CFC,Mineirão
+3,11/02/2026,00:30,Vitória,Flamengo,1,2,A,VIT,FLA,Barradão
+3,11/02/2026,22:00,Chapecoense,Coritiba,3,3,D,CHA,CFC,Arena Condá
+3,11/02/2026,22:00,Mirassol,Cruzeiro,2,2,D,MIR,CRU,Campos Maia
+3,11/02/2026,23:00,Atlético-MG,Remo,3,3,D,CAM,REM,Arena MRV
+3,12/02/2026,00:30,São Paulo,Grêmio,2,0,H,SAO,GRE,Morumbis
+3,12/02/2026,00:30,Vasco da Gama,Bahia,0,1,A,VAS,BAH,São Januário
+3,12/02/2026,22:00,Athletico-PR,Santos,2,1,H,CAP,SAN,Arena da Baixada
+3,12/02/2026,22:30,Fluminense,Botafogo,1,0,H,FLU,BOT,Maracanã
+3,12/02/2026,23:00,Corinthians,Red Bull Bragantino,2,0,H,COR,RBB,Neo Química Arena
+3,13/02/2026,00:30,Internacional,Palmeiras,1,3,A,INT,PAL,Beira-Rio
+2,19/02/2026,22:30,Athletico-PR,Corinthians,0,1,A,CAP,COR,Arena da Baixada
+4,25/02/2026,22:00,Red Bull Bragantino,Athletico-PR,1,1,D,RBB,CAP,Cícero de Souza Marques
+4,25/02/2026,22:00,Remo,Internacional,1,1,D,REM,INT,Mangueirão
+4,25/02/2026,22:30,Coritiba,São Paulo,0,1,A,CFC,SAO,Couto Pereira
+4,25/02/2026,23:00,Cruzeiro,Corinthians,1,1,D,CRU,COR,Mineirão
+4,26/02/2026,00:30,Grêmio,Atlético-MG,2,1,H,GRE,CAM,Arena do Grêmio
+4,26/02/2026,00:30,Palmeiras,Fluminense,2,1,H,PAL,FLU,Allianz Parque
+4,26/02/2026,22:00,Santos,Vasco da Gama,2,1,H,SAN,VAS,Vila Belmiro
+5,11/03/2026,00:30,Mirassol,Santos,2,2,D,MIR,SAN,Campos Maia
+5,11/03/2026,22:00,Atlético-MG,Internacional,1,0,H,CAM,INT,Arena MRV
+5,11/03/2026,23:00,Bahia,Vitória,1,1,D,BAH,VIT,Arena Fonte Nova
+5,12/03/2026,00:30,Corinthians,Coritiba,0,2,A,COR,CFC,Neo Química Arena
+5,12/03/2026,00:30,Flamengo,Cruzeiro,2,0,H,FLA,CRU,Maracanã
+5,12/03/2026,22:00,Remo,Fluminense,0,2,A,REM,FLU,Mangueirão
+5,12/03/2026,22:30,Vasco da Gama,Palmeiras,2,1,H,VAS,PAL,São Januário
+5,12/03/2026,23:00,São Paulo,Chapecoense,2,0,H,SAO,CHA,Morumbis
+5,13/03/2026,00:30,Grêmio,Red Bull Bragantino,1,1,D,GRE,RBB,Arena do Grêmio
+6,14/03/2026,21:30,Vitória,Atlético-MG,2,0,H,VIT,CAM,Barradão
+6,14/03/2026,23:30,Botafogo,Flamengo,0,3,A,BOT,FLA,Engenhão
+6,15/03/2026,19:00,Fluminense,Athletico-PR,3,2,H,FLU,CAP,Maracanã
+6,15/03/2026,19:00,Internacional,Bahia,0,1,A,INT,BAH,Beira-Rio
+6,15/03/2026,19:00,Santos,Corinthians,1,1,D,SAN,COR,Vila Belmiro
+6,15/03/2026,21:30,Coritiba,Remo,1,0,H,CFC,REM,Couto Pereira
+6,15/03/2026,21:30,Palmeiras,Mirassol,1,0,H,PAL,MIR,Allianz Parque
+6,15/03/2026,23:30,Red Bull Bragantino,São Paulo,1,2,A,RBB,SAO,Cícero de Souza Marques
+6,15/03/2026,23:30,Cruzeiro,Vasco da Gama,3,3,D,CRU,VAS,Mineirão
+6,16/03/2026,23:00,Chapecoense,Grêmio,1,1,D,CHA,GRE,Arena Condá
+7,18/03/2026,22:00,Bahia,Red Bull Bragantino,2,0,H,BAH,RBB,Arena Fonte Nova
+7,18/03/2026,22:00,Palmeiras,Botafogo,2,1,H,PAL,BOT,Allianz Parque
+7,18/03/2026,22:30,Athletico-PR,Cruzeiro,2,1,H,CAP,CRU,Arena da Baixada
+7,18/03/2026,23:00,Atlético-MG,São Paulo,1,0,H,CAM,SAO,Arena MRV
+7,18/03/2026,23:00,Mirassol,Coritiba,0,1,A,MIR,CFC,Campos Maia
+7,19/03/2026,00:30,Santos,Internacional,1,2,A,SAN,INT,Vila Belmiro
+7,19/03/2026,00:30,Vasco da Gama,Fluminense,3,2,H,VAS,FLU,São Januário
+7,19/03/2026,22:00,Grêmio,Vitória,2,0,H,GRE,VIT,Arena do Grêmio
+7,19/03/2026,23:00,Flamengo,Remo,3,0,H,FLA,REM,Maracanã
+7,20/03/2026,00:30,Chapecoense,Corinthians,0,0,D,CHA,COR,Arena Condá
+8,21/03/2026,19:00,Red Bull Bragantino,Botafogo,1,2,A,RBB,BOT,Cícero de Souza Marques
+8,21/03/2026,21:30,Fluminense,Atlético-MG,1,0,H,FLU,CAM,Maracanã
+8,22/03/2026,00:00,São Paulo,Palmeiras,0,1,A,SAO,PAL,Morumbis
+8,22/03/2026,19:00,Athletico-PR,Coritiba,2,0,H,CAP,CFC,Arena da Baixada
+8,22/03/2026,19:00,Cruzeiro,Santos,0,0,D,CRU,SAN,Mineirão
+8,22/03/2026,19:00,Remo,Bahia,4,1,H,REM,BAH,Mangueirão
+8,22/03/2026,19:00,Vasco da Gama,Grêmio,2,1,H,VAS,GRE,São Januário
+8,22/03/2026,21:30,Internacional,Chapecoense,2,0,H,INT,CHA,Beira-Rio
+8,22/03/2026,21:30,Vitória,Mirassol,1,0,H,VIT,MIR,Barradão
+8,22/03/2026,23:30,Corinthians,Flamengo,1,1,D,COR,FLA,Neo Química Arena
+5,29/03/2026,23:30,Athletico-PR,Botafogo,4,1,H,CAP,BOT,Arena da Baixada
+9,01/04/2026,23:30,Botafogo,Mirassol,3,2,H,BOT,MIR,Engenhão
+9,01/04/2026,23:30,Internacional,São Paulo,1,1,D,INT,SAO,Beira-Rio
+9,02/04/2026,00:00,Bahia,Athletico-PR,3,0,H,BAH,CAP,Arena Fonte Nova
+9,02/04/2026,00:00,Cruzeiro,Vitória,3,0,H,CRU,VIT,Mineirão
+9,02/04/2026,00:30,Coritiba,Vasco da Gama,1,1,D,CFC,VAS,Couto Pereira
+9,02/04/2026,01:30,Fluminense,Corinthians,3,1,H,FLU,COR,Maracanã
+9,02/04/2026,23:00,Chapecoense,Atlético-MG,0,4,A,CHA,CAM,Arena Condá
+9,02/04/2026,23:00,Santos,Remo,2,0,H,SAN,REM,Vila Belmiro
+9,03/04/2026,01:30,Red Bull Bragantino,Flamengo,3,0,H,RBB,FLA,Cícero de Souza Marques
+9,03/04/2026,01:30,Palmeiras,Grêmio,2,1,H,PAL,GRE,Allianz Parque
+10,04/04/2026,22:30,São Paulo,Cruzeiro,4,1,H,SAO,CRU,Morumbis
+10,05/04/2026,00:30,Coritiba,Fluminense,1,1,D,CFC,FLU,Couto Pereira
+10,05/04/2026,01:00,Vasco da Gama,Botafogo,1,2,A,VAS,BOT,São Januário
+10,05/04/2026,20:00,Chapecoense,Vitória,1,1,D,CHA,VIT,Arena Condá
+10,05/04/2026,21:30,Atlético-MG,Athletico-PR,2,1,H,CAM,CAP,Arena MRV
+10,05/04/2026,21:30,Flamengo,Santos,3,1,H,FLA,SAN,Maracanã
+10,05/04/2026,23:30,Bahia,Palmeiras,1,2,A,BAH,PAL,Arena Fonte Nova
+10,05/04/2026,23:30,Corinthians,Internacional,0,1,A,COR,INT,Neo Química Arena
+10,06/04/2026,00:00,Mirassol,Red Bull Bragantino,0,1,A,MIR,RBB,Campos Maia
+10,06/04/2026,00:30,Grêmio,Remo,0,0,D,GRE,REM,Arena do Grêmio
+11,11/04/2026,20:30,Remo,Vasco da Gama,1,1,D,REM,VAS,Mangueirão
+11,11/04/2026,20:30,Vitória,São Paulo,2,0,H,VIT,SAO,Barradão
+11,11/04/2026,22:30,Mirassol,Bahia,1,2,A,MIR,BAH,Campos Maia
+11,12/04/2026,00:00,Santos,Atlético-MG,1,0,H,SAN,CAM,Vila Belmiro
+11,12/04/2026,00:30,Internacional,Grêmio,0,0,D,INT,GRE,Beira-Rio
+11,12/04/2026,15:00,Athletico-PR,Chapecoense,2,0,H,CAP,CHA,Arena da Baixada
+11,12/04/2026,20:00,Botafogo,Coritiba,2,2,D,BOT,CFC,Engenhão
+11,12/04/2026,22:00,Fluminense,Flamengo,1,2,A,FLU,FLA,Maracanã
+11,12/04/2026,22:30,Corinthians,Palmeiras,0,0,D,COR,PAL,Neo Química Arena
+11,12/04/2026,22:30,Cruzeiro,Red Bull Bragantino,2,1,H,CRU,RBB,Mineirão
+12,18/04/2026,22:30,Chapecoense,Botafogo,1,4,A,CHA,BOT,Arena Condá
+12,18/04/2026,22:30,Vasco da Gama,São Paulo,2,1,H,VAS,SAO,São Januário
+12,19/04/2026,00:00,Vitória,Corinthians,0,0,D,VIT,COR,Barradão
+12,19/04/2026,00:30,Cruzeiro,Grêmio,2,0,H,CRU,GRE,Mineirão
+12,19/04/2026,15:00,Internacional,Mirassol,1,2,A,INT,MIR,Beira-Rio
+12,19/04/2026,20:00,Coritiba,Atlético-MG,2,0,H,CFC,CAM,Couto Pereira
+12,19/04/2026,20:00,Santos,Fluminense,2,3,A,SAN,FLU,Vila Belmiro
+12,19/04/2026,22:30,Red Bull Bragantino,Remo,4,2,H,RBB,REM,Cícero de Souza Marques
+12,19/04/2026,22:30,Palmeiras,Athletico-PR,1,0,H,PAL,CAP,Allianz Parque
+12,19/04/2026,23:30,Flamengo,Bahia,2,0,H,FLA,BAH,Maracanã
+13,25/04/2026,22:30,Bahia,Santos,2,2,D,BAH,SAN,Arena Fonte Nova
+13,25/04/2026,22:30,Botafogo,Internacional,2,2,D,BOT,INT,Engenhão
+13,25/04/2026,22:30,Remo,Cruzeiro,0,1,A,REM,CRU,Mangueirão
+13,26/04/2026,01:00,São Paulo,Mirassol,1,0,H,SAO,MIR,Morumbis
+13,26/04/2026,20:00,Corinthians,Vasco da Gama,1,0,H,COR,VAS,Neo Química Arena
+13,26/04/2026,20:00,Grêmio,Coritiba,1,0,H,GRE,CFC,Arena do Grêmio
+13,26/04/2026,22:30,Athletico-PR,Vitória,3,1,H,CAP,VIT,Arena da Baixada
+13,26/04/2026,22:30,Red Bull Bragantino,Palmeiras,0,1,A,RBB,PAL,Cícero de Souza Marques
+13,27/04/2026,00:30,Atlético-MG,Flamengo,0,4,A,CAM,FLA,Arena MRV
+13,27/04/2026,00:30,Fluminense,Chapecoense,2,1,H,FLU,CHA,Maracanã
+14,02/05/2026,20:00,Botafogo,Remo,1,2,A,BOT,REM,Engenhão
+14,02/05/2026,22:30,Palmeiras,Santos,1,1,D,PAL,SAN,Allianz Parque
+14,02/05/2026,22:30,Vitória,Coritiba,4,1,H,VIT,CFC,Barradão
+14,03/05/2026,00:30,Athletico-PR,Grêmio,0,0,D,CAP,GRE,Arena da Baixada
+14,03/05/2026,01:00,Cruzeiro,Atlético-MG,1,3,A,CRU,CAM,Mineirão
+14,03/05/2026,20:00,Flamengo,Vasco da Gama,2,2,D,FLA,VAS,Maracanã
+14,03/05/2026,20:00,São Paulo,Bahia,2,2,D,SAO,BAH,Morumbis
+14,03/05/2026,22:30,Chapecoense,Red Bull Bragantino,1,2,A,CHA,RBB,Arena Condá
+14,03/05/2026,22:30,Internacional,Fluminense,2,0,H,INT,FLU,Beira-Rio
+14,04/05/2026,00:30,Mirassol,Corinthians,2,1,H,MIR,COR,Campos Maia
+15,09/05/2026,20:00,Coritiba,Internacional,2,2,D,CFC,INT,Couto Pereira
+15,09/05/2026,22:00,Fluminense,Vitória,2,2,D,FLU,VIT,Maracanã
+15,10/05/2026,01:00,Bahia,Cruzeiro,1,2,A,BAH,CRU,Arena Fonte Nova
+15,10/05/2026,20:00,Atlético-MG,Botafogo,1,1,D,CAM,BOT,Arena MRV
+15,10/05/2026,20:00,Remo,Palmeiras,1,1,D,REM,PAL,Mangueirão
+15,10/05/2026,22:30,Corinthians,São Paulo,3,2,H,COR,SAO,Neo Química Arena
+15,10/05/2026,22:30,Mirassol,Chapecoense,1,1,D,MIR,CHA,Campos Maia
+15,10/05/2026,22:30,Santos,Red Bull Bragantino,2,0,H,SAN,RBB,Vila Belmiro
+15,10/05/2026,23:30,Grêmio,Flamengo,0,1,A,GRE,FLA,Arena do Grêmio
+15,11/05/2026,00:30,Vasco da Gama,Athletico-PR,1,0,H,VAS,CAP,São Januário
+16,16/05/2026,22:30,Atlético-MG,Mirassol,3,1,H,CAM,MIR,Arena MRV
+16,16/05/2026,22:30,Internacional,Vasco da Gama,4,1,H,INT,VAS,Beira-Rio
+16,16/05/2026,23:00,Fluminense,São Paulo,2,1,H,FLU,SAO,Maracanã
+16,17/05/2026,01:00,Palmeiras,Cruzeiro,1,1,D,PAL,CRU,Allianz Parque
+16,17/05/2026,15:00,Santos,Coritiba,0,3,A,SAN,CFC,Vila Belmiro
+16,17/05/2026,20:00,Bahia,Grêmio,1,1,D,BAH,GRE,Arena Fonte Nova
+16,17/05/2026,20:00,Botafogo,Corinthians,3,1,H,BOT,COR,Engenhão
+16,17/05/2026,22:30,Red Bull Bragantino,Vitória,2,0,H,RBB,VIT,Cícero de Souza Marques
+16,17/05/2026,22:30,Chapecoense,Remo,2,3,A,CHA,REM,Arena Condá
+16,17/05/2026,23:30,Athletico-PR,Flamengo,1,1,D,CAP,FLA,Arena da Baixada
+17,23/05/2026,21:00,São Paulo,Botafogo,1,1,D,SAO,BOT,Morumbis
+17,23/05/2026,21:00,Vitória,Internacional,2,0,H,VIT,INT,Barradão
+17,23/05/2026,23:00,Grêmio,Santos,3,2,H,GRE,SAN,Arena do Grêmio
+17,23/05/2026,23:00,Mirassol,Fluminense,1,0,H,MIR,FLU,Campos Maia
+17,24/05/2026,01:00,Flamengo,Palmeiras,0,3,A,FLA,PAL,Maracanã
+17,24/05/2026,20:00,Cruzeiro,Chapecoense,2,1,H,CRU,CHA,Mineirão
+17,24/05/2026,20:00,Remo,Athletico-PR,1,2,A,REM,CAP,Mangueirão
+17,24/05/2026,22:30,Corinthians,Atlético-MG,1,0,H,COR,CAM,Neo Química Arena
+17,25/05/2026,00:30,Vasco da Gama,Red Bull Bragantino,0,3,A,VAS,RBB,São Januário
+17,26/05/2026,00:00,Coritiba,Bahia,3,2,H,CFC,BAH,Couto Pereira
+18,30/05/2026,20:00,Athletico-PR,Mirassol,1,0,H,CAP,MIR,Arena da Baixada
+18,30/05/2026,20:00,Flamengo,Coritiba,3,0,H,FLA,CFC,Maracanã
+18,30/05/2026,21:30,Bahia,Botafogo,2,1,H,BAH,BOT,Arena Fonte Nova
+18,30/05/2026,21:30,Grêmio,Corinthians,1,3,A,GRE,COR,Arena do Grêmio
+18,31/05/2026,00:00,Santos,Vitória,3,1,H,SAN,VIT,Vila Belmiro
+18,31/05/2026,15:00,Red Bull Bragantino,Internacional,3,1,H,RBB,INT,Cícero de Souza Marques
+18,31/05/2026,20:00,Palmeiras,Chapecoense,1,0,H,PAL,CHA,Allianz Parque
+18,31/05/2026,20:00,Vasco da Gama,Atlético-MG,0,1,A,VAS,CAM,São Januário
+18,01/06/2026,00:30,Cruzeiro,Fluminense,1,1,D,CRU,FLU,Mineirão
+18,01/06/2026,00:30,Remo,São Paulo,1,0,H,REM,SAO,Mangueirão
+19,16/07/2026,23:30,Botafogo,Santos,2,1,H,BOT,SAN,Engenhão
+19,16/07/2026,23:30,Vitória,Vasco da Gama,1,0,H,VIT,VAS,Barradão
+4,17/07/2026,23:30,Bahia,Chapecoense,2,0,H,BAH,CHA,Arena Fonte Nova
+19,18/07/2026,00:00,Fluminense,Red Bull Bragantino,1,1,D,FLU,RBB,Maracanã
+19,18/07/2026,00:00,Mirassol,Grêmio,2,1,H,MIR,GRE,Campos Maia
+19,21/07/2026,23:30,Atlético-MG,Bahia,1,1,D,CAM,BAH,Arena MRV
+19,22/07/2026,23:30,Coritiba,Palmeiras,1,3,A,CFC,PAL,Couto Pereira
+19,23/07/2026,01:30,Chapecoense,Flamengo,0,4,A,CHA,FLA,Arena Condá
+19,23/07/2026,01:30,Internacional,Cruzeiro,1,2,A,INT,CRU,Beira-Rio
+19,23/07/2026,01:30,São Paulo,Athletico-PR,1,2,A,SAO,CAP,Morumbis
+4,23/07/2026,23:30,Botafogo,Vitória,0,0,D,BOT,VIT,Engenhão
+19,23/07/2026,23:30,Corinthians,Remo,3,0,H,COR,REM,Neo Química Arena
+20,25/07/2026,22:30,Athletico-PR,Internacional,2,0,H,CAP,INT,Arena da Baixada
+20,25/07/2026,22:30,Santos,Chapecoense,2,2,D,SAN,CHA,Vila Belmiro
+20,26/07/2026,00:30,Vasco da Gama,Mirassol,1,1,D,VAS,MIR,São Januário
+20,26/07/2026,20:00,Bahia,Corinthians,1,1,D,BAH,COR,Arena Fonte Nova
+20,26/07/2026,20:00,Cruzeiro,Botafogo,0,1,A,CRU,BOT,Mineirão
+20,26/07/2026,22:30,Red Bull Bragantino,Coritiba,0,0,D,RBB,CFC,Cícero de Souza Marques
+20,26/07/2026,22:30,Flamengo,São Paulo,1,1,D,FLA,SAO,Maracanã
+20,26/07/2026,22:30,Grêmio,Fluminense,1,1,D,GRE,FLU,Arena do Grêmio
+20,26/07/2026,23:30,Palmeiras,Atlético-MG,1,2,A,PAL,CAM,Allianz Parque
+20,26/07/2026,23:30,Remo,Vitória,2,0,H,REM,VIT,Mangueirão
+21,29/07/2026,23:30,Internacional,Flamengo,1,1,D,INT,FLA,Beira-Rio
+21,29/07/2026,23:30,Mirassol,Remo,2,1,H,MIR,REM,Campos Maia
+21,30/07/2026,01:30,Fluminense,Bahia,0,0,D,FLU,BAH,Maracanã
+21,30/07/2026,01:30,Vitória,Palmeiras,0,4,A,VIT,PAL,Barradão
+21,30/07/2026,23:30,Corinthians,Athletico-PR,0,0,D,COR,CAP,Neo Química Arena
+21,31/07/2026,01:30,Coritiba,Cruzeiro,0,1,A,CFC,CRU,Couto Pereira
+22,08/08/2026,20:00,Grêmio,São Paulo,2,1,H,GRE,SAO,Arena do Grêmio
+22,08/08/2026,22:30,Remo,Atlético-MG,2,2,D,REM,CAM,Mangueirão
+22,09/08/2026,00:30,Coritiba,Chapecoense,2,1,H,CFC,CHA,Couto Pereira
+22,09/08/2026,01:00,Botafogo,Fluminense,1,1,D,BOT,FLU,Engenhão
+22,09/08/2026,15:00,Cruzeiro,Mirassol,3,1,H,CRU,MIR,Mineirão
+22,09/08/2026,20:00,Bahia,Vasco da Gama,0,0,D,BAH,VAS,Arena Fonte Nova
+22,09/08/2026,20:00,Palmeiras,Internacional,0,0,D,PAL,INT,Allianz Parque
+22,09/08/2026,22:30,Red Bull Bragantino,Corinthians,0,2,A,RBB,COR,Cícero de Souza Marques
+22,09/08/2026,22:30,Santos,Athletico-PR,0,2,A,SAN,CAP,Vila Belmiro
+22,09/08/2026,23:30,Flamengo,Vitória,2,0,H,FLA,VIT,Maracanã
+23,15/08/2026,20:30,Fluminense,Palmeiras,3,2,H,FLU,PAL,Maracanã
+23,15/08/2026,22:30,Athletico-PR,Red Bull Bragantino,1,1,D,CAP,RBB,Arena da Baixada
+23,16/08/2026,01:00,São Paulo,Coritiba,1,1,D,SAO,CFC,Morumbis
+23,16/08/2026,15:00,Chapecoense,Bahia,3,3,D,CHA,BAH,Arena Condá
+23,16/08/2026,20:00,Atlético-MG,Grêmio,3,0,H,CAM,GRE,Arena MRV
+23,16/08/2026,20:00,Vasco da Gama,Santos,0,3,A,VAS,SAN,São Januário
+23,16/08/2026,22:30,Mirassol,Flamengo,1,5,A,MIR,FLA,Campos Maia
+23,16/08/2026,22:30,Vitória,Botafogo,1,0,H,VIT,BOT,Barradão
+23,16/08/2026,23:30,Corinthians,Cruzeiro,1,2,A,COR,CRU,Neo Química Arena
+23,18/08/2026,00:00,Internacional,Remo,1,1,D,INT,REM,Beira-Rio
+24,22/08/2026,20:00,Fluminense,Remo,2,1,H,FLU,REM,Maracanã
+24,22/08/2026,22:30,Internacional,Atlético-MG,0,0,D,INT,CAM,Beira-Rio
+24,23/08/2026,00:30,Cruzeiro,Flamengo,2,1,H,CRU,FLA,Mineirão
+24,23/08/2026,20:00,Red Bull Bragantino,Grêmio,1,0,H,RBB,GRE,Cícero de Souza Marques
+24,23/08/2026,20:00,Palmeiras,Vasco da Gama,4,1,H,PAL,VAS,Allianz Parque
+24,23/08/2026,20:00,Vitória,Bahia,0,2,A,VIT,BAH,Barradão
+24,23/08/2026,22:30,Chapecoense,São Paulo,1,0,H,CHA,SAO,Arena Condá
+24,23/08/2026,22:30,Santos,Mirassol,1,1,D,SAN,MIR,Vila Belmiro
+24,23/08/2026,23:30,Coritiba,Corinthians,2,1,H,CFC,COR,Couto Pereira
+24,25/08/2026,00:00,Botafogo,Athletico-PR,2,3,A,BOT,CAP,Engenhão
+25,29/08/2026,22:30,Atlético-MG,Vitória,2,1,H,CAM,VIT,Arena MRV
+25,30/08/2026,00:00,São Paulo,Red Bull Bragantino,2,1,H,SAO,RBB,Morumbis
+25,30/08/2026,01:20,Vasco da Gama,Cruzeiro,3,1,H,VAS,CRU,São Januário
+25,30/08/2026,15:00,Athletico-PR,Fluminense,3,3,D,CAP,FLU,Arena da Baixada
+25,30/08/2026,20:00,Corinthians,Santos,0,1,A,COR,SAN,Neo Química Arena
+25,30/08/2026,20:00,Flamengo,Botafogo,3,0,H,FLA,BOT,Maracanã
+25,30/08/2026,22:30,Grêmio,Chapecoense,3,1,H,GRE,CHA,Arena do Grêmio
+25,30/08/2026,22:30,Mirassol,Palmeiras,1,1,D,MIR,PAL,Campos Maia
+25,30/08/2026,23:30,Bahia,Internacional,3,2,H,BAH,INT,Arena Fonte Nova
+25,01/09/2026,00:00,Remo,Coritiba,2,3,A,REM,CFC,Mangueirão
+4,02/09/2026,23:30,Flamengo,Mirassol,2,0,H,FLA,MIR,Maracanã
+26,05/09/2026,20:00,Red Bull Bragantino,Bahia,2,3,A,RBB,BAH,Cícero de Souza Marques
+26,05/09/2026,22:30,São Paulo,Atlético-MG,2,0,H,SAO,CAM,Morumbis
+26,06/09/2026,01:00,Fluminense,Vasco da Gama,1,0,H,FLU,VAS,Maracanã
+26,06/09/2026,15:00,Coritiba,Mirassol,1,2,A,CFC,MIR,Couto Pereira
+26,06/09/2026,20:00,Cruzeiro,Athletico-PR,3,1,H,CRU,CAP,Mineirão
+26,06/09/2026,20:00,Internacional,Santos,2,3,A,INT,SAN,Beira-Rio
+26,06/09/2026,20:00,Remo,Flamengo,0,1,A,REM,FLA,Mangueirão
+26,06/09/2026,22:30,Botafogo,Palmeiras,0,0,D,BOT,PAL,Engenhão
+26,06/09/2026,23:30,Corinthians,Chapecoense,1,2,A,COR,CHA,Neo Química Arena
+26,08/09/2026,00:00,Vitória,Grêmio,1,0,H,VIT,GRE,Barradão
+27,12/09/2026,01:00,Coritiba,Athletico-PR,3,3,D,CFC,CAP,Couto Pereira
+27,12/09/2026,20:00,Atlético-MG,Fluminense,3,1,H,CAM,FLU,Arena MRV
+27,12/09/2026,20:00,Grêmio,Vasco da Gama,1,2,A,GRE,VAS,Arena do Grêmio
+27,12/09/2026,21:00,Chapecoense,Internacional,1,2,A,CHA,INT,Arena Condá
+27,12/09/2026,22:30,Palmeiras,São Paulo,2,0,H,PAL,SAO,Allianz Parque
+27,13/09/2026,00:30,Botafogo,Red Bull Bragantino,1,1,D,BOT,RBB,Engenhão
+27,13/09/2026,01:00,Santos,Cruzeiro,2,1,H,SAN,CRU,Vila Belmiro
+27,13/09/2026,20:00,Mirassol,Vitória,2,2,D,MIR,VIT,Campos Maia
+27,13/09/2026,21:30,Flamengo,Corinthians,2,1,H,FLA,COR,Maracanã
+27,15/09/2026,00:00,Bahia,Remo,2,1,H,BAH,REM,Arena Fonte Nova
+21,16/09/2026,23:30,Botafogo,Grêmio,3,2,H,BOT,GRE,Engenhão
+28,19/09/2026,20:00,Atlético-MG,Chapecoense,1,1,D,CAM,CHA,Arena MRV
+28,19/09/2026,21:00,Mirassol,Botafogo,2,0,H,MIR,BOT,Campos Maia
+28,19/09/2026,22:30,Remo,Santos,1,2,A,REM,SAN,Mangueirão
+28,20/09/2026,00:30,Vasco da Gama,Coritiba,5,0,H,VAS,CFC,São Januário
+28,20/09/2026,01:00,São Paulo,Internacional,1,0,H,SAO,INT,Morumbis
+28,20/09/2026,15:00,Grêmio,Palmeiras,0,0,D,GRE,PAL,Arena do Grêmio
+28,20/09/2026,20:00,Corinthians,Fluminense,1,3,A,COR,FLU,Neo Química Arena
+28,20/09/2026,20:00,Vitória,Cruzeiro,1,3,A,VIT,CRU,Barradão
+28,20/09/2026,22:30,Flamengo,Red Bull Bragantino,2,1,H,FLA,RBB,Maracanã
+28,20/09/2026,23:30,Athletico-PR,Bahia,2,1,H,CAP,BAH,Arena da Baixada
+21,03/10/2026,00:00,São Paulo,Santos,1,2,A,SAO,SAN,Morumbis
+21,03/10/2026,22:30,Atlético-MG,Red Bull Bragantino,1,0,H,CAM,RBB,Arena MRV
+29,07/10/2026,23:30,Red Bull Bragantino,Mirassol,1,1,D,RBB,MIR,Cícero de Souza Marques
+29,07/10/2026,23:30,Internacional,Corinthians,2,1,H,INT,COR,Beira-Rio
+29,07/10/2026,23:30,Remo,Grêmio,1,1,D,REM,GRE,Mangueirão
+29,08/10/2026,00:00,Vitória,Chapecoense,4,0,H,VIT,CHA,Barradão
+29,08/10/2026,00:30,Botafogo,Vasco da Gama,1,2,A,BOT,VAS,Engenhão
+29,08/10/2026,01:30,Cruzeiro,São Paulo,2,0,H,CRU,SAO,Mineirão
+29,08/10/2026,23:30,Santos,Flamengo,2,2,D,SAN,FLA,Vila Belmiro
+29,09/10/2026,00:00,Athletico-PR,Atlético-MG,2,2,D,CAP,CAM,Arena da Baixada
+29,09/10/2026,01:30,Fluminense,Coritiba,4,0,H,FLU,CFC,Maracanã
+29,09/10/2026,01:30,Palmeiras,Bahia,1,0,H,PAL,BAH,Allianz Parque
+30,10/10/2026,22:00,Vasco da Gama,Remo,0,0,D,VAS,REM,São Januário
+30,11/10/2026,01:00,São Paulo,Vitória,2,1,H,SAO,VIT,Morumbis
+30,11/10/2026,20:00,Atlético-MG,Santos,2,1,H,CAM,SAN,Arena MRV
+30,11/10/2026,21:30,Flamengo,Fluminense,1,0,H,FLA,FLU,Maracanã
+30,11/10/2026,21:30,Grêmio,Internacional,1,1,D,GRE,INT,Arena do Grêmio
+30,11/10/2026,21:30,Palmeiras,Corinthians,4,1,H,PAL,COR,Allianz Parque
+30,11/10/2026,23:30,Bahia,Mirassol,1,0,H,BAH,MIR,Arena Fonte Nova
+30,12/10/2026,20:00,Coritiba,Botafogo,1,1,D,CFC,BOT,Couto Pereira
+30,12/10/2026,23:30,Chapecoense,Athletico-PR,1,4,A,CHA,CAP,Arena Condá
+30,13/10/2026,01:00,Red Bull Bragantino,Cruzeiro,4,2,H,RBB,CRU,Cícero de Souza Marques
+31,17/10/2026,00:00,Mirassol,Internacional,2,0,H,MIR,INT,Campos Maia
+31,17/10/2026,22:00,Botafogo,Chapecoense,1,0,H,BOT,CHA,Engenhão
+31,17/10/2026,22:30,Atlético-MG,Coritiba,1,0,H,CAM,CFC,Arena MRV
+31,17/10/2026,23:30,Athletico-PR,Palmeiras,0,2,A,CAP,PAL,Arena da Baixada
+31,18/10/2026,01:00,São Paulo,Vasco da Gama,1,0,H,SAO,VAS,Morumbis
+31,18/10/2026,20:00,Fluminense,Santos,1,2,A,FLU,SAN,Maracanã
+31,18/10/2026,20:00,Grêmio,Cruzeiro,2,4,A,GRE,CRU,Arena do Grêmio
+31,18/10/2026,22:30,Bahia,Flamengo,0,3,A,BAH,FLA,Arena Fonte Nova
+31,18/10/2026,23:30,Remo,Red Bull Bragantino,1,1,D,REM,RBB,Mangueirão
+31,20/10/2026,00:00,Corinthians,Vitória,1,1,D,COR,VIT,Neo Química Arena
+32,23/10/2026,00:00,Cruzeiro,Remo,1,0,H,CRU,REM,Mineirão
+32,24/10/2026,20:30,Internacional,Botafogo,3,0,H,INT,BOT,Beira-Rio
+32,24/10/2026,20:30,Mirassol,São Paulo,1,1,D,MIR,SAO,Campos Maia
+32,24/10/2026,20:30,Vitória,Athletico-PR,1,1,D,VIT,CAP,Barradão
+32,24/10/2026,22:30,Palmeiras,Red Bull Bragantino,2,0,H,PAL,RBB,Allianz Parque
+32,24/10/2026,22:30,Vasco da Gama,Corinthians,3,2,H,VAS,COR,São Januário
+32,24/10/2026,23:30,Chapecoense,Fluminense,2,1,H,CHA,FLU,Arena Condá
+32,25/10/2026,01:00,Santos,Bahia,1,1,D,SAN,BAH,Vila Belmiro
+32,26/10/2026,22:30,Coritiba,Grêmio,0,1,A,CFC,GRE,Couto Pereira
+32,26/10/2026,23:00,Flamengo,Atlético-MG,3,2,H,FLA,CAM,Maracanã
+33,28/10/2026,22:30,Red Bull Bragantino,Chapecoense,3,0,H,RBB,CHA,Cícero de Souza Marques
+33,28/10/2026,22:30,Fluminense,Internacional,2,1,H,FLU,INT,Maracanã
+33,28/10/2026,22:30,Santos,Palmeiras,0,0,D,SAN,PAL,Vila Belmiro
+33,29/10/2026,00:30,Bahia,São Paulo,3,2,H,BAH,SAO,Arena Fonte Nova
+33,29/10/2026,00:30,Remo,Botafogo,2,1,H,REM,BOT,Mangueirão
+33,29/10/2026,22:30,Atlético-MG,Cruzeiro,0,1,A,CAM,CRU,Arena MRV
+33,29/10/2026,23:00,Vasco da Gama,Flamengo,1,4,A,VAS,FLA,São Januário
+33,30/10/2026,00:30,Grêmio,Athletico-PR,2,0,H,GRE,CAP,Arena do Grêmio
+33,30/10/2026,23:00,Corinthians,Mirassol,2,0,H,COR,MIR,Neo Química Arena
+33,31/10/2026,19:00,Coritiba,Vitória,2,0,H,CFC,VIT,Couto Pereira
+34,02/11/2026,23:00,Red Bull Bragantino,Santos,2,1,H,RBB,SAN,Cícero de Souza Marques
+34,03/11/2026,19:30,Chapecoense,Mirassol,1,2,A,CHA,MIR,Arena Condá
+34,03/11/2026,21:30,Internacional,Coritiba,1,0,H,INT,CFC,Beira-Rio
+34,04/11/2026,19:30,Athletico-PR,Vasco da Gama,1,3,A,CAP,VAS,Arena da Baixada
+34,04/11/2026,19:30,Flamengo,Grêmio,3,1,H,FLA,GRE,Maracanã
+34,04/11/2026,21:30,São Paulo,Corinthians,0,0,D,SAO,COR,Morumbis
+34,04/11/2026,21:30,Botafogo,Atlético-MG,1,0,H,BOT,CAM,Engenhão
+34,05/11/2026,19:30,Palmeiras,Remo,6,1,H,PAL,REM,Allianz Parque
+34,05/11/2026,21:30,Cruzeiro,Bahia,3,2,H,CRU,BAH,Mineirão
+34,06/11/2026,20:00,Vitória,Fluminense,0,3,A,VIT,FLU,Barradão

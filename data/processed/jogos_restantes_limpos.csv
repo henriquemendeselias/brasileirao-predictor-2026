@@ -1,0 +1,42 @@
+rodada,data,horario,mandante,visitante,sigla_mandante,sigla_visitante,estadio
+21,14/11/2026,20:30,Chapecoense,Vasco da Gama,CHA,VAS,Arena Condá
+35,14/11/2026,18:30,Mirassol,Atlético-MG,MIR,CAM,Campos Maia
+35,18/11/2026,19:30,Coritiba,Santos,CFC,SAN,Couto Pereira
+35,18/11/2026,20:00,Remo,Chapecoense,REM,CHA,Mangueirão
+35,18/11/2026,20:30,Flamengo,Athletico-PR,FLA,CAP,Maracanã
+35,18/11/2026,20:30,Cruzeiro,Palmeiras,CRU,PAL,Mineirão
+35,18/11/2026,21:30,Corinthians,Botafogo,COR,BOT,Neo Química Arena
+35,18/11/2026,21:30,Grêmio,Bahia,GRE,BAH,Arena do Grêmio
+35,19/11/2026,19:30,Vasco da Gama,Internacional,VAS,INT,São Januário
+35,19/11/2026,19:30,Vitória,Red Bull Bragantino,VIT,RBB,Barradão
+35,19/11/2026,21:30,São Paulo,Fluminense,SAO,FLU,Morumbis
+36,21/11/2026,16:30,Palmeiras,Flamengo,PAL,FLA,Allianz Parque
+36,21/11/2026,17:30,Bahia,Coritiba,BAH,CFC,Arena Fonte Nova
+36,21/11/2026,21:00,Chapecoense,Cruzeiro,CHA,CRU,Arena Condá
+36,22/11/2026,16:00,Athletico-PR,Remo,CAP,REM,Arena da Baixada
+36,22/11/2026,18:30,Fluminense,Mirassol,FLU,MIR,Maracanã
+36,22/11/2026,19:30,Red Bull Bragantino,Vasco da Gama,RBB,VAS,Cícero de Souza Marques
+36,23/11/2026,19:30,Internacional,Vitória,INT,VIT,Beira-Rio
+36,23/11/2026,20:00,Botafogo,São Paulo,BOT,SAO,Engenhão
+36,23/11/2026,21:00,Santos,Grêmio,SAN,GRE,Vila Belmiro
+36,25/11/2026,20:00,Atlético-MG,Corinthians,CAM,COR,Arena MRV
+37,28/11/2026,12:00,Mirassol,Athletico-PR,MIR,CAP,Campos Maia
+37,28/11/2026,12:00,Coritiba,Flamengo,CFC,FLA,Couto Pereira
+37,28/11/2026,12:00,Botafogo,Bahia,BOT,BAH,Engenhão
+37,28/11/2026,12:00,Corinthians,Grêmio,COR,GRE,Neo Química Arena
+37,28/11/2026,12:00,Vitória,Santos,VIT,SAN,Barradão
+37,28/11/2026,12:00,Internacional,Red Bull Bragantino,INT,RBB,Beira-Rio
+37,28/11/2026,12:00,Chapecoense,Palmeiras,CHA,PAL,Arena Condá
+37,28/11/2026,12:00,Atlético-MG,Vasco da Gama,CAM,VAS,Arena MRV
+37,28/11/2026,12:00,Fluminense,Cruzeiro,FLU,CRU,Maracanã
+37,28/11/2026,12:00,São Paulo,Remo,SAO,REM,Morumbis
+38,02/12/2026,12:00,Santos,Botafogo,SAN,BOT,Vila Belmiro
+38,02/12/2026,12:00,Vasco da Gama,Vitória,VAS,VIT,São Januário
+38,02/12/2026,12:00,Red Bull Bragantino,Fluminense,RBB,FLU,Cícero de Souza Marques
+38,02/12/2026,12:00,Grêmio,Mirassol,GRE,MIR,Arena do Grêmio
+38,02/12/2026,12:00,Bahia,Atlético-MG,BAH,CAM,Arena Fonte Nova
+38,02/12/2026,12:00,Palmeiras,Coritiba,PAL,CFC,Allianz Parque
+38,02/12/2026,12:00,Flamengo,Chapecoense,FLA,CHA,Maracanã
+38,02/12/2026,12:00,Cruzeiro,Internacional,CRU,INT,Mineirão
+38,02/12/2026,12:00,Athletico-PR,São Paulo,CAP,SAO,Arena da Baixada
+38,02/12/2026,12:00,Remo,Corinthians,REM,COR,Mangueirão
